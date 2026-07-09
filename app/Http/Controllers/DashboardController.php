@@ -40,4 +40,14 @@ class DashboardController extends Controller
     {
         return view('pages.watchlist');
     }
+
+    public function riskEngine(): View
+    {
+    return view('pages.risk');
+    }
+
+    public function visualization(): View
+    {
+    return view('pages.visualization');
+    }
 }

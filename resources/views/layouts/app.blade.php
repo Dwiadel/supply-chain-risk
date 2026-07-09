@@ -6,11 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Global Supply Chain Risk Intelligence')</title>
 
-    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Leaflet CSS -->
     <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
 
     <style>
@@ -31,7 +28,6 @@
             overflow-x: hidden;
         }
 
-        /* ===== SIDEBAR ===== */
         #sidebar {
             width: var(--sidebar-width);
             height: 100vh;
@@ -79,7 +75,7 @@
             padding: 10px 20px;
             color: #b0b3c8;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.2s;
             border-left: 3px solid transparent;
         }
@@ -92,7 +88,7 @@
         }
 
         .sidebar-nav a i {
-            font-size: 16px;
+            font-size: 15px;
             width: 20px;
             text-align: center;
         }
@@ -104,7 +100,6 @@
             border-left-color: #dc3545;
         }
 
-        /* ===== TOPBAR ===== */
         #topbar {
             height: var(--topbar-height);
             position: fixed;
@@ -120,7 +115,6 @@
             gap: 15px;
         }
 
-        /* ===== SEARCH BOX ===== */
         #country-search-wrapper {
             position: relative;
             flex: 1;
@@ -198,7 +192,6 @@
             color: var(--text-muted-custom);
         }
 
-        /* ===== MAIN CONTENT ===== */
         #main-content {
             margin-left: var(--sidebar-width);
             margin-top: var(--topbar-height);
@@ -206,7 +199,6 @@
             min-height: calc(100vh - var(--topbar-height));
         }
 
-        /* ===== CARDS ===== */
         .dash-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -236,7 +228,6 @@
             margin-top: 4px;
         }
 
-        /* ===== RISK BADGE ===== */
         .risk-badge {
             display: inline-flex;
             align-items: center;
@@ -251,7 +242,6 @@
         .risk-medium { background: rgba(255,193,7,0.2);  color: #ffc107; border: 1px solid rgba(255,193,7,0.3); }
         .risk-high   { background: rgba(220,53,69,0.2);  color: #ff6b7a; border: 1px solid rgba(220,53,69,0.3); }
 
-        /* ===== SENTIMENT BARS ===== */
         .sentiment-bar {
             height: 8px;
             border-radius: 4px;
@@ -261,7 +251,6 @@
             gap: 2px;
         }
 
-        /* ===== LOADING OVERLAY ===== */
         #loading-overlay {
             display: none;
             position: fixed;
@@ -287,7 +276,6 @@
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* ===== COUNTRY FLAG HEADER ===== */
         #country-header {
             display: none;
             align-items: center;
@@ -307,13 +295,11 @@
 
         #country-header.show { display: flex; }
 
-        /* ===== CHART CONTAINER ===== */
         .chart-container {
             position: relative;
             height: 220px;
         }
 
-        /* ===== SCROLLBAR ===== */
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: var(--dark-bg); }
         ::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 3px; }
@@ -326,14 +312,15 @@
 {{-- Loading Overlay --}}
 <div id="loading-overlay">
     <div class="loading-spinner"></div>
-    <div style="color: #b0b3c8; font-size: 14px;" id="loading-text">Mengambil data negara...</div>
+    <div style="color:#b0b3c8;font-size:14px;" id="loading-text">Mengambil data negara...</div>
 </div>
 
 {{-- Sidebar --}}
 <div id="sidebar">
     <div class="sidebar-brand">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
-            <div style="width:32px;height:32px;background:var(--primary);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <div style="width:32px;height:32px;background:var(--primary);border-radius:8px;
+                        display:flex;align-items:center;justify-content:center;">
                 <i class="bi bi-globe2" style="color:#fff;font-size:16px;"></i>
             </div>
             <div>
@@ -344,34 +331,57 @@
     </div>
 
     <nav class="sidebar-nav">
+        {{-- 1. Dashboard --}}
         <div class="sidebar-section-label">Main</div>
         <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
             <i class="bi bi-grid-1x2-fill"></i> Dashboard
         </a>
+
+        {{-- 2. Peta Global --}}
         <a href="{{ route('map') }}" class="{{ request()->routeIs('map') ? 'active' : '' }}">
             <i class="bi bi-map-fill"></i> Peta Global
         </a>
-        <a href="{{ route('comparison') }}" class="{{ request()->routeIs('comparison') ? 'active' : '' }}">
-            <i class="bi bi-bar-chart-steps"></i> Perbandingan
+
+        {{-- 3. Risk Scoring Engine --}}
+        <div class="sidebar-section-label" style="margin-top:8px;">Decision Support</div>
+        <a href="{{ route('risk-engine') }}" class="{{ request()->routeIs('risk-engine') ? 'active' : '' }}">
+            <i class="bi bi-speedometer2"></i> Risk Scoring Engine
         </a>
 
-        <div class="sidebar-section-label" style="margin-top:10px;">Analysis</div>
+        {{-- 4. Data Visualization --}}
+        <a href="{{ route('visualization') }}" class="{{ request()->routeIs('visualization') ? 'active' : '' }}">
+            <i class="bi bi-graph-up"></i> Data Visualization
+        </a>
+
+        {{-- 5. Perbandingan Negara --}}
+        <a href="{{ route('comparison') }}" class="{{ request()->routeIs('comparison') ? 'active' : '' }}">
+            <i class="bi bi-bar-chart-steps"></i> Perbandingan Negara
+        </a>
+
+        {{-- 6. Kurs Mata Uang --}}
+        <div class="sidebar-section-label" style="margin-top:8px;">Analysis</div>
         <a href="{{ route('currency') }}" class="{{ request()->routeIs('currency') ? 'active' : '' }}">
             <i class="bi bi-currency-exchange"></i> Kurs Mata Uang
         </a>
+
+        {{-- 7. Berita & Sentimen --}}
         <a href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'active' : '' }}">
             <i class="bi bi-newspaper"></i> Berita & Sentimen
         </a>
+
+        {{-- 8. Pelabuhan --}}
         <a href="{{ route('ports') }}" class="{{ request()->routeIs('ports') ? 'active' : '' }}">
             <i class="bi bi-anchor"></i> Pelabuhan
         </a>
 
-        <div class="sidebar-section-label" style="margin-top:10px;">Personal</div>
+        {{-- 9. Watchlist --}}
+        <div class="sidebar-section-label" style="margin-top:8px;">Personal</div>
         <a href="{{ route('watchlist') }}" class="{{ request()->routeIs('watchlist') ? 'active' : '' }}">
             <i class="bi bi-bookmark-star-fill"></i> Watchlist
         </a>
 
-        <div class="sidebar-section-label" style="margin-top:10px;">System</div>
+        {{-- 10. Admin Panel --}}
+        <div class="sidebar-section-label" style="margin-top:8px;">System</div>
         <a href="{{ route('admin.index') }}"
            class="admin-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
            style="color:#ff6b7a;">
@@ -390,7 +400,7 @@
         <div id="search-results" style="display:none;"></div>
     </div>
 
-    <div style="margin-left:auto;display:flex;align-items:center;gap:15px;">
+    <div style="margin-left:auto;display:flex;align-items:center;gap:10px;">
         <div id="selected-country-badge" style="display:none;" class="risk-badge risk-low">
             <i class="bi bi-globe2"></i>
             <span id="selected-country-name">-</span>
@@ -415,16 +425,12 @@
     @yield('content')
 </div>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
 <script>
-window.AppState = {
-    currentCountry: null,
-    currentRisk: null,
-};
+window.AppState = { currentCountry: null, currentRisk: null };
 
 const searchInput = document.getElementById('country-search');
 const searchBox   = document.getElementById('search-results');
@@ -470,15 +476,12 @@ async function searchCountries(query) {
         }).join('');
 
         searchBox.style.display = 'block';
-    } catch (err) {
-        console.error('Search error:', err);
-    }
+    } catch (err) { console.error('Search error:', err); }
 }
 
 async function selectCountry(cca2, name) {
     searchBox.style.display = 'none';
     searchInput.value = name;
-
     showLoading('Mengambil data ' + name + '...');
 
     try {
@@ -487,18 +490,15 @@ async function selectCountry(cca2, name) {
             headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content }
         });
         const data = await res.json();
-
         if (!data.success) throw new Error(data.message);
 
         window.AppState.currentCountry = data.data;
-
         document.getElementById('selected-country-name').textContent = name;
         document.getElementById('selected-country-badge').style.display = 'flex';
 
         window.dispatchEvent(new CustomEvent('countrySelected', {
             detail: { cca2: cca2, country: data.data }
         }));
-
     } catch (err) {
         alert('Gagal mengambil data: ' + err.message);
     } finally {

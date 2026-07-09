@@ -11,6 +11,8 @@ Route::get('/currency',   [DashboardController::class, 'currency'])->name('curre
 Route::get('/news',       [DashboardController::class, 'news'])->name('news');
 Route::get('/ports',      [DashboardController::class, 'ports'])->name('ports');
 Route::get('/watchlist',  [DashboardController::class, 'watchlist'])->name('watchlist');
+Route::get('/risk-engine',     [DashboardController::class, 'riskEngine'])->name('risk-engine');
+Route::get('/visualization',   [DashboardController::class, 'visualization'])->name('visualization');
 
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
