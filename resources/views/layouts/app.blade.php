@@ -399,10 +399,20 @@
                autocomplete="off">
         <div id="search-results" style="display:none;"></div>
     </div>
+    <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+    @csrf
+    <button type="submit"
+            style="background:rgba(255,255,255,0.05);border:1px solid var(--card-border);
+                   color:#8b8fa8;padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer;
+                   display:flex;align-items:center;gap:5px;">
+        <i class="bi bi-box-arrow-right"></i> Logout
+    </button>
+</form>
 
     <div style="margin-left:auto;display:flex;align-items:center;gap:10px;">
         <div id="selected-country-badge" style="display:none;" class="risk-badge risk-low">
             <i class="bi bi-globe2"></i>
+            {{ Auth::user()->name ?? 'User' }}
             <span id="selected-country-name">-</span>
         </div>
         <a href="{{ route('admin.index') }}"
