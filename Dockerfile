@@ -1,7 +1,6 @@
 # Dockerfile untuk deploy Laravel ke Render.com
-# Kalau versi PHP project kamu beda, cek composer.json lalu ganti angka di baris bawah ini
 
-FROM php:8.2-cli
+FROM php:8.3-cli
 
 # Install dependency sistem yang dibutuhkan Laravel
 RUN apt-get update && apt-get install -y \
