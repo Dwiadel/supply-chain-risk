@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 // ===== USER AUTH =====
 Route::get('/login',  [AuthController::class, 'showLogin'])->name('login');
@@ -40,4 +41,5 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/articles',              [AdminController::class, 'articles'])->name('articles');
     Route::post('/articles',             [AdminController::class, 'storeArticle'])->name('articles.store');
     Route::delete('/articles/{article}', [AdminController::class, 'deleteArticle'])->name('articles.delete');
+    Route::get('/jalankan-setup-database-xk29', function () { Artisan::call('migrate', ['--force' => true]); $migrateOutput = Artisan::output(); Artisan::call('db:seed', ['--force' => true]); $seedOutput = Artisan::output(); return '<pre>MIGRATE:\n' . $migrateOutput . '\n\nSEED:\n' . $seedOutput . '</pre>'; });
 });
