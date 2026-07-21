@@ -2,7 +2,7 @@
 @section('title', 'Perbandingan Negara')
 @section('content')
 
-<h5 style="color:#fff;margin-bottom:20px;">
+<h5 style="color:var(--text-main);margin-bottom:20px;">
     <i class="bi bi-bar-chart-steps"></i> Country Comparison Engine
 </h5>
 
@@ -15,10 +15,10 @@
                 <input type="text" id="search-a" placeholder="Ketik nama negara A..."
                        autocomplete="off"
                        style="width:100%;background:var(--dark-bg);border:1px solid var(--card-border);
-                              color:#fff;border-radius:8px;padding:9px 14px;font-size:14px;">
+                              color:var(--text-main);border-radius:8px;padding:9px 14px;font-size:14px;">
                 <div id="results-a" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;
                      background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;
-                     z-index:999;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.4);"></div>
+                     z-index:999;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(31,35,51,0.12);"></div>
             </div>
             <div id="data-a" style="margin-top:15px;"></div>
         </div>
@@ -27,9 +27,9 @@
     {{-- VS --}}
     <div class="col-md-2 d-flex align-items-center justify-content-center">
         <div style="text-align:center;">
-            <div style="width:50px;height:50px;background:rgba(13,110,253,0.15);border:1px solid rgba(13,110,253,0.3);
+            <div style="width:50px;height:50px;background:rgba(253,126,20,0.15);border:1px solid rgba(253,126,20,0.3);
                         border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;">
-                <i class="bi bi-arrow-left-right" style="color:#0d6efd;font-size:18px;"></i>
+                <i class="bi bi-arrow-left-right" style="color:var(--primary);font-size:18px;"></i>
             </div>
             <div style="color:var(--text-muted-custom);font-size:13px;font-weight:700;margin-top:8px;">VS</div>
         </div>
@@ -43,10 +43,10 @@
                 <input type="text" id="search-b" placeholder="Ketik nama negara B..."
                        autocomplete="off"
                        style="width:100%;background:var(--dark-bg);border:1px solid var(--card-border);
-                              color:#fff;border-radius:8px;padding:9px 14px;font-size:14px;">
+                              color:var(--text-main);border-radius:8px;padding:9px 14px;font-size:14px;">
                 <div id="results-b" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;
                      background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;
-                     z-index:999;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.4);"></div>
+                     z-index:999;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(31,35,51,0.12);"></div>
             </div>
             <div id="data-b" style="margin-top:15px;"></div>
         </div>
@@ -82,6 +82,12 @@
 let countryA = null, countryB = null;
 let riskA    = null, riskB    = null;
 let chartRisk = null, chartGdp = null;
+
+// Warna tim: Negara A pakai warna primary (brand), Negara B pakai biru sebagai pembeda
+const COLOR_A = '#fd7e14';
+const COLOR_B = '#0d6efd';
+const COLOR_A_SOFT = 'rgba(253,126,20,0.7)';
+const COLOR_B_SOFT = 'rgba(13,110,253,0.7)';
 
 function setupSearch(inputId, resultsId, slot) {
     const input   = document.getElementById(inputId);
@@ -119,12 +125,12 @@ async function doSearch(query, resultsEl, slot) {
                 : '<i class="bi bi-flag"></i>';
             return '<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;' +
                    'border-bottom:1px solid var(--card-border);" ' +
-                   'onmouseenter="this.style.background=\'rgba(13,110,253,0.1)\'" ' +
+                   'onmouseenter="this.style.background=\'rgba(253,126,20,0.1)\'" ' +
                    'onmouseleave="this.style.background=\'\'" ' +
                    'onclick="selectForSlot(\'' + c.cca2 + '\', \'' + c.name.replace(/'/g, "\\'") + '\', \'' + slot + '\')">' +
                    flag +
                    '<div>' +
-                       '<div style="color:#fff;font-size:13px;font-weight:500;">' + c.name + '</div>' +
+                       '<div style="color:var(--text-main);font-size:13px;font-weight:500;">' + c.name + '</div>' +
                        '<div style="color:var(--text-muted-custom);font-size:11px;">' + (c.region || '') + ' · ' + (c.currency_code || '') + '</div>' +
                    '</div></div>';
         }).join('');
@@ -163,7 +169,7 @@ async function selectForSlot(cca2, name, slot) {
 
     } catch(e) {
         document.getElementById('data-' + slot).innerHTML =
-            '<div style="color:#ff6b7a;font-size:13px;padding:10px 0;">Gagal: ' + e.message + '</div>';
+            '<div style="color:#dc3545;font-size:13px;padding:10px 0;">Gagal: ' + e.message + '</div>';
     }
 }
 
@@ -181,7 +187,7 @@ function renderSlotData(slot, country, risk) {
         '<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">' +
             flag +
             '<div>' +
-                '<div style="color:#fff;font-weight:700;font-size:15px;">' + country.name + '</div>' +
+                '<div style="color:var(--text-main);font-weight:700;font-size:15px;">' + country.name + '</div>' +
                 '<div style="color:var(--text-muted-custom);font-size:11px;">' + (country.capital || '') + ' · ' + (country.region || '') + '</div>' +
             '</div>' +
         '</div>' +
@@ -197,7 +203,7 @@ function statRow(label, value) {
     return '<div style="display:flex;justify-content:space-between;align-items:center;' +
            'padding:8px 0;border-bottom:1px solid var(--card-border);">' +
                '<span style="color:var(--text-muted-custom);font-size:13px;">' + label + '</span>' +
-               '<span style="color:#fff;font-size:13px;font-weight:500;">' + value + '</span>' +
+               '<span style="color:var(--text-main);font-size:13px;font-weight:500;">' + value + '</span>' +
            '</div>';
 }
 
@@ -225,8 +231,8 @@ function tryRenderComparison() {
                         riskA.components.news.raw_score,
                         riskA.total_score,
                     ] : [0,0,0,0,0],
-                    backgroundColor: 'rgba(13,110,253,0.7)',
-                    borderColor: '#0d6efd', borderWidth: 1,
+                    backgroundColor: COLOR_A_SOFT,
+                    borderColor: COLOR_A, borderWidth: 1,
                 },
                 {
                     label: countryB.name,
@@ -237,17 +243,17 @@ function tryRenderComparison() {
                         riskB.components.news.raw_score,
                         riskB.total_score,
                     ] : [0,0,0,0,0],
-                    backgroundColor: 'rgba(255,107,122,0.7)',
-                    borderColor: '#ff6b7a', borderWidth: 1,
+                    backgroundColor: COLOR_B_SOFT,
+                    borderColor: COLOR_B, borderWidth: 1,
                 }
             ]
         },
         options: {
             responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { labels: { color: '#b0b3c8' } } },
+            plugins: { legend: { labels: { color: '#6b7088' } } },
             scales: {
-                x: { ticks: { color: '#8b8fa8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                y: { ticks: { color: '#8b8fa8' }, grid: { color: 'rgba(255,255,255,0.05)' }, max: 100 }
+                x: { ticks: { color: '#6b7088' }, grid: { color: 'rgba(31,35,51,0.06)' } },
+                y: { ticks: { color: '#6b7088' }, grid: { color: 'rgba(31,35,51,0.06)' }, max: 100 }
             }
         }
     });
@@ -271,8 +277,8 @@ function tryRenderComparison() {
                         indA && indA.inflation_rate ? indA.inflation_rate : 0,
                         indA && indA.population ? (indA.population / 1e6).toFixed(1) : 0,
                     ],
-                    backgroundColor: 'rgba(37,181,116,0.7)',
-                    borderColor: '#25b574', borderWidth: 1,
+                    backgroundColor: 'rgba(25,135,84,0.7)',
+                    borderColor: '#198754', borderWidth: 1,
                 },
                 {
                     label: countryB.name,
@@ -288,10 +294,10 @@ function tryRenderComparison() {
         },
         options: {
             responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { labels: { color: '#b0b3c8' } } },
+            plugins: { legend: { labels: { color: '#6b7088' } } },
             scales: {
-                x: { ticks: { color: '#8b8fa8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                y: { ticks: { color: '#8b8fa8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                x: { ticks: { color: '#6b7088' }, grid: { color: 'rgba(31,35,51,0.06)' } },
+                y: { ticks: { color: '#6b7088' }, grid: { color: 'rgba(31,35,51,0.06)' } }
             }
         }
     });
@@ -321,16 +327,16 @@ function tryRenderComparison() {
             '<thead>' +
                 '<tr style="border-bottom:2px solid var(--card-border);">' +
                     '<th style="padding:10px;color:var(--text-muted-custom);font-size:12px;text-align:left;width:30%;">Indikator</th>' +
-                    '<th style="padding:10px;color:#0d6efd;font-size:13px;text-align:center;">' + flagA + countryA.name + '</th>' +
-                    '<th style="padding:10px;color:#ff6b7a;font-size:13px;text-align:center;">' + flagB + countryB.name + '</th>' +
+                    '<th style="padding:10px;color:' + COLOR_A + ';font-size:13px;text-align:center;">' + flagA + countryA.name + '</th>' +
+                    '<th style="padding:10px;color:' + COLOR_B + ';font-size:13px;text-align:center;">' + flagB + countryB.name + '</th>' +
                 '</tr>' +
             '</thead>' +
             '<tbody>' +
                 rows.map(function(r) {
                     return '<tr style="border-bottom:1px solid var(--card-border);">' +
                         '<td style="padding:10px;color:var(--text-muted-custom);font-size:13px;">' + r[0] + '</td>' +
-                        '<td style="padding:10px;color:#fff;font-size:13px;text-align:center;font-weight:500;">' + r[1] + '</td>' +
-                        '<td style="padding:10px;color:#fff;font-size:13px;text-align:center;font-weight:500;">' + r[2] + '</td>' +
+                        '<td style="padding:10px;color:var(--text-main);font-size:13px;text-align:center;font-weight:500;">' + r[1] + '</td>' +
+                        '<td style="padding:10px;color:var(--text-main);font-size:13px;text-align:center;font-weight:500;">' + r[2] + '</td>' +
                     '</tr>';
                 }).join('') +
             '</tbody>' +

@@ -2,7 +2,7 @@
 @section('title', 'Data Visualization Dashboard')
 @section('content')
 
-<h5 style="color:#fff;margin-bottom:5px;">
+<h5 style="color:var(--text-main);margin-bottom:5px;">
     <i class="bi bi-graph-up"></i> Data Visualization Dashboard
 </h5>
 <p style="color:var(--text-muted-custom);font-size:13px;margin-bottom:20px;">
@@ -10,7 +10,7 @@
 </p>
 
 <div id="viz-welcome" style="text-align:center;padding:40px 20px;">
-    <i class="bi bi-bar-chart-line" style="font-size:48px;color:#0d6efd;opacity:0.5;display:block;margin-bottom:15px;"></i>
+    <i class="bi bi-bar-chart-line" style="font-size:48px;color:#fd7e14;opacity:0.5;display:block;margin-bottom:15px;"></i>
     <p style="color:var(--text-muted-custom);">Pilih negara dari search box di atas untuk melihat visualisasi data</p>
 </div>
 
@@ -149,8 +149,8 @@ window.addEventListener('countrySelected', async function(e) {
                 label: 'Inflasi (%)',
                 data: infValues,
                 backgroundColor: infValues.map(function(v) {
-                    if (!v) return 'rgba(139,143,168,0.5)';
-                    return v > 5 ? 'rgba(255,107,122,0.7)' : v < 0 ? 'rgba(255,193,7,0.7)' : 'rgba(13,110,253,0.7)';
+                    if (!v) return 'rgba(107,112,136,0.4)';
+                    return v > 5 ? 'rgba(220,53,69,0.7)' : v < 0 ? 'rgba(255,193,7,0.7)' : 'rgba(253,126,20,0.75)';
                 }),
                 borderRadius: 4, borderWidth: 0,
             }]
@@ -187,10 +187,10 @@ window.addEventListener('countrySelected', async function(e) {
                         datasets: [{
                             label: '1 USD → ' + country.currency_code,
                             data: curValues,
-                            borderColor: '#ffc107',
-                            backgroundColor: 'rgba(255,193,7,0.1)',
+                            borderColor: '#c98a00',
+                            backgroundColor: 'rgba(255,193,7,0.15)',
                             fill: true, tension: 0.3,
-                            pointRadius: 2, pointBackgroundColor: '#ffc107',
+                            pointRadius: 2, pointBackgroundColor: '#c98a00',
                         }]
                     },
                     options: chartOpts()
@@ -222,19 +222,19 @@ window.addEventListener('countrySelected', async function(e) {
                     datasets: [{
                         label: 'Risk Score',
                         data: rScores,
-                        borderColor: '#0d6efd',
-                        backgroundColor: 'rgba(13,110,253,0.1)',
+                        borderColor: '#fd7e14',
+                        backgroundColor: 'rgba(253,126,20,0.12)',
                         fill: true, tension: 0.4,
                         pointBackgroundColor: rScores.map(function(s) {
-                            return s <= 33 ? '#25b574' : s <= 66 ? '#ffc107' : '#ff6b7a';
+                            return s <= 33 ? '#198754' : s <= 66 ? '#c98a00' : '#dc3545';
                         }),
                         pointRadius: 5,
                     }]
                 },
                 options: Object.assign(chartOpts(), {
                     scales: {
-                        x: { ticks: { color: '#8b8fa8', maxTicksLimit: 8, font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                        y: { min: 0, max: 100, ticks: { color: '#8b8fa8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                        x: { ticks: { color: '#6b7088', maxTicksLimit: 8, font: { size: 10 } }, grid: { color: 'rgba(31,35,51,0.06)' } },
+                        y: { min: 0, max: 100, ticks: { color: '#6b7088' }, grid: { color: 'rgba(31,35,51,0.06)' } }
                     }
                 })
             });
@@ -248,10 +248,10 @@ window.addEventListener('countrySelected', async function(e) {
 function chartOpts() {
     return {
         responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { labels: { color: '#b0b3c8', font: { size: 11 } } } },
+        plugins: { legend: { labels: { color: '#4b4f66', font: { size: 11 } } } },
         scales: {
-            x: { ticks: { color: '#8b8fa8', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
-            y: { ticks: { color: '#8b8fa8', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } }
+            x: { ticks: { color: '#6b7088', font: { size: 10 } }, grid: { color: 'rgba(31,35,51,0.06)' } },
+            y: { ticks: { color: '#6b7088', font: { size: 10 } }, grid: { color: 'rgba(31,35,51,0.06)' } }
         }
     };
 }

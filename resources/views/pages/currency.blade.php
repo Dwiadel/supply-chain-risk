@@ -2,12 +2,12 @@
 @section('title', 'Kurs Mata Uang')
 @section('content')
 
-<h5 style="color:#fff;margin-bottom:20px;">
+<h5 style="color:var(--text-main);margin-bottom:20px;">
     <i class="bi bi-currency-exchange"></i> Currency Impact Dashboard
 </h5>
 
 <div id="currency-welcome" style="text-align:center;padding:60px 20px;">
-    <i class="bi bi-currency-exchange" style="font-size:48px;color:#0d6efd;opacity:0.5;display:block;margin-bottom:15px;"></i>
+    <i class="bi bi-currency-exchange" style="font-size:48px;color:var(--primary);opacity:0.5;display:block;margin-bottom:15px;"></i>
     <p style="color:var(--text-muted-custom);">Pilih negara dari search box di atas untuk melihat data kurs</p>
 </div>
 
@@ -119,7 +119,7 @@ window.addEventListener('countrySelected', async function(e) {
         const chg    = parseFloat(latest.change_percent || 0);
         const chgEl  = document.getElementById('cur-change');
         chgEl.textContent = (chg >= 0 ? '▲ +' : '▼ ') + chg.toFixed(4) + '%';
-        chgEl.style.color = chg >= 0 ? '#25b574' : '#ff6b7a';
+        chgEl.style.color = chg >= 0 ? '#198754' : '#dc3545';
 
         // Grafik trend
         const labels = rates.map(r => r.rate_date);
@@ -134,20 +134,20 @@ window.addEventListener('countrySelected', async function(e) {
                 datasets: [{
                     label: '1 USD → ' + currency,
                     data: values,
-                    borderColor: '#0d6efd',
-                    backgroundColor: 'rgba(13,110,253,0.1)',
+                    borderColor: '#fd7e14',
+                    backgroundColor: 'rgba(253,126,20,0.1)',
                     fill: true,
                     tension: 0.4,
                     pointRadius: 3,
-                    pointBackgroundColor: '#0d6efd',
+                    pointBackgroundColor: '#fd7e14',
                 }]
             },
             options: {
                 responsive: true, maintainAspectRatio: false,
-                plugins: { legend: { labels: { color: '#b0b3c8' } } },
+                plugins: { legend: { labels: { color: '#6b7088' } } },
                 scales: {
-                    x: { ticks: { color: '#8b8fa8', maxTicksLimit: 10 }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                    y: { ticks: { color: '#8b8fa8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                    x: { ticks: { color: '#6b7088', maxTicksLimit: 10 }, grid: { color: 'rgba(31,35,51,0.06)' } },
+                    y: { ticks: { color: '#6b7088' }, grid: { color: 'rgba(31,35,51,0.06)' } }
                 }
             }
         });
@@ -163,11 +163,11 @@ window.addEventListener('countrySelected', async function(e) {
             data.data.map(function(r) {
                 const c = parseFloat(r.change_percent || 0);
                 return '<tr style="border-bottom:1px solid var(--card-border);">' +
-                    '<td style="padding:8px;color:#b0b3c8;font-size:13px;">' + r.rate_date + '</td>' +
-                    '<td style="padding:8px;color:#fff;font-size:13px;text-align:right;font-weight:600;">' +
+                    '<td style="padding:8px;color:var(--text-muted-custom);font-size:13px;">' + r.rate_date + '</td>' +
+                    '<td style="padding:8px;color:var(--text-main);font-size:13px;text-align:right;font-weight:600;">' +
                         parseFloat(r.rate).toLocaleString(undefined, { maximumFractionDigits: 4 }) +
                     '</td>' +
-                    '<td style="padding:8px;font-size:13px;text-align:right;color:' + (c >= 0 ? '#25b574' : '#ff6b7a') + ';">' +
+                    '<td style="padding:8px;font-size:13px;text-align:right;color:' + (c >= 0 ? '#198754' : '#dc3545') + ';">' +
                         (c >= 0 ? '▲ +' : '▼ ') + c.toFixed(4) + '%' +
                     '</td>' +
                 '</tr>';
@@ -179,10 +179,10 @@ window.addEventListener('countrySelected', async function(e) {
 
 function infoItem(icon, label, value) {
     return '<div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--dark-bg);border-radius:8px;">' +
-        '<i class="bi ' + icon + '" style="color:#0d6efd;font-size:16px;width:20px;text-align:center;"></i>' +
+        '<i class="bi ' + icon + '" style="color:var(--primary);font-size:16px;width:20px;text-align:center;"></i>' +
         '<div>' +
             '<div style="color:var(--text-muted-custom);font-size:10px;">' + label + '</div>' +
-            '<div style="color:#fff;font-size:13px;font-weight:500;">' + value + '</div>' +
+            '<div style="color:var(--text-main);font-size:13px;font-weight:500;">' + value + '</div>' +
         '</div>' +
     '</div>';
 }

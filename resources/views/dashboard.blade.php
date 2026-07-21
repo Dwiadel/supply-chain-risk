@@ -7,11 +7,11 @@
 {{-- Welcome State --}}
 <div id="welcome-state">
     <div style="text-align:center;padding:80px 20px;">
-        <div style="width:80px;height:80px;background:rgba(13,110,253,0.1);border-radius:50%;
+        <div style="width:80px;height:80px;background:rgba(253,126,20,0.12);border-radius:50%;
                     display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
-            <i class="bi bi-globe2" style="font-size:36px;color:#0d6efd;"></i>
+            <i class="bi bi-globe2" style="font-size:36px;color:#fd7e14;"></i>
         </div>
-        <h4 style="color:#fff;margin-bottom:10px;">Selamat Datang di Supply Chain Risk Intelligence</h4>
+        <h4 style="color:var(--text-main);margin-bottom:10px;">Selamat Datang di Supply Chain Risk Intelligence</h4>
         <p style="color:var(--text-muted-custom);max-width:500px;margin:0 auto 30px;">
             Ketik nama negara mana saja di kotak pencarian di atas untuk memulai monitoring
             risiko rantai pasok secara real-time.
@@ -21,7 +21,7 @@
             @php $code = \App\Models\Country::where('name',$c)->value('cca2') ?? ''; @endphp
             <button onclick="quickSelect('{{ $code }}','{{ $c }}')"
                     class="btn btn-sm"
-                    style="background:var(--card-bg);border:1px solid var(--card-border);color:#fff;">
+                    style="background:var(--card-bg);border:1px solid var(--card-border);color:var(--text-main);">
                 {{ $c }}
             </button>
             @endforeach
@@ -35,9 +35,9 @@
     {{-- Country Header --}}
     <div id="country-header" class="mb-4" style="display:none;align-items:center;gap:15px;
          padding:15px 20px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;">
-        <img id="ch-flag" src="" alt="flag" style="height:36px;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">
+        <img id="ch-flag" src="" alt="flag" style="height:36px;border-radius:4px;box-shadow:0 2px 8px rgba(31,35,51,0.15);">
         <div>
-            <h5 id="ch-name" style="color:#fff;margin:0;font-weight:700;"></h5>
+            <h5 id="ch-name" style="color:var(--text-main);margin:0;font-weight:700;"></h5>
             <small id="ch-meta" style="color:var(--text-muted-custom);"></small>
         </div>
         <div style="margin-left:auto;display:flex;align-items:center;gap:10px;">
@@ -46,7 +46,7 @@
                 <span id="ch-risk-label">Low Risk</span>
             </span>
             <button onclick="addToWatchlist()" class="btn btn-sm"
-                    style="background:rgba(13,110,253,0.2);border:1px solid rgba(13,110,253,0.4);color:#0d6efd;">
+                    style="background:rgba(253,126,20,0.12);border:1px solid rgba(253,126,20,0.4);color:#e8590c;">
                 <i class="bi bi-bookmark-plus"></i> Watchlist
             </button>
         </div>
@@ -92,7 +92,7 @@
                 <div style="text-align:center;padding:10px 0;">
                     <canvas id="risk-gauge" width="200" height="120"
                             style="max-width:200px;margin:0 auto;display:block;"></canvas>
-                    <div id="risk-total" style="font-size:42px;font-weight:800;color:#fff;margin-top:-10px;">—</div>
+                    <div id="risk-total" style="font-size:42px;font-weight:800;color:var(--text-main);margin-top:-10px;">—</div>
                     <div id="risk-level-badge" class="risk-badge risk-low"
                          style="margin:8px auto;width:fit-content;">
                         <i class="bi bi-shield-check"></i>
@@ -256,10 +256,10 @@ function updateKPIs(country) {
     if (ind && ind.inflation_rate !== null && ind.inflation_rate !== undefined) {
         const inf = parseFloat(ind.inflation_rate);
         infEl.textContent = inf.toFixed(2) + '%';
-        infEl.style.color = inf > 5 ? '#ff6b7a' : inf < 0 ? '#ffc107' : '#25b574';
+        infEl.style.color = inf > 5 ? '#dc3545' : inf < 0 ? '#e6a700' : '#198754';
     } else {
         infEl.textContent = 'N/A';
-        infEl.style.color = '#fff';
+        infEl.style.color = 'var(--text-main)';
     }
 
     // Populasi
@@ -292,7 +292,7 @@ function updateKPIs(country) {
                     const chg = parseFloat(latest.change_percent || 0);
                     const chgEl = document.getElementById('kpi-currency-change');
                     chgEl.textContent = (chg >= 0 ? '▲ +' : '▼ ') + chg.toFixed(4) + '%';
-                    chgEl.style.color = chg >= 0 ? '#25b574' : '#ff6b7a';
+                    chgEl.style.color = chg >= 0 ? '#198754' : '#dc3545';
                 } else {
                     document.getElementById('kpi-currency').textContent =
                         country.currency_code + ' (belum ada data)';
@@ -321,11 +321,11 @@ function loadGdpChart(country) {
             datasets: [{
                 label: 'GDP (Miliar USD)',
                 data: values,
-                borderColor: '#25b574',
-                backgroundColor: 'rgba(37,181,116,0.1)',
+                borderColor: '#198754',
+                backgroundColor: 'rgba(25,135,84,0.12)',
                 fill: true,
                 tension: 0.4,
-                pointBackgroundColor: '#25b574',
+                pointBackgroundColor: '#198754',
                 pointRadius: 4,
                 spanGaps: true,
             }]
@@ -356,10 +356,10 @@ async function loadRiskScore(cca2, country) {
             var key = entry[0], c = entry[1];
             bHtml += '<div style="margin-bottom:12px;">' +
                 '<div style="display:flex;justify-content:space-between;margin-bottom:4px;">' +
-                    '<small style="color:#b0b3c8;">' + c.label + '</small>' +
-                    '<small style="color:#fff;font-weight:600;">' + c.raw_score.toFixed(1) + '</small>' +
+                    '<small style="color:#6b7088;">' + c.label + '</small>' +
+                    '<small style="color:var(--text-main);font-weight:600;">' + c.raw_score.toFixed(1) + '</small>' +
                 '</div>' +
-                '<div style="height:6px;background:var(--dark-bg);border-radius:3px;overflow:hidden;">' +
+                '<div style="height:6px;background:var(--card-border);border-radius:3px;overflow:hidden;">' +
                     '<div style="height:100%;width:' + c.raw_score + '%;background:' + getRiskColor(c.raw_score) + ';border-radius:3px;transition:width 0.8s ease;"></div>' +
                 '</div>' +
                 '<small style="color:var(--text-muted-custom);">Bobot ' + (c.weight*100).toFixed(0) + '% · Kontribusi ' + c.contribution.toFixed(2) + '</small>' +
@@ -379,7 +379,7 @@ async function loadRiskScore(cca2, country) {
                     weatherStat('bi-exclamation-triangle', 'Storm Risk', latestW.storm_risk_score) +
                 '</div>' +
                 '<div style="margin-top:12px;padding:10px;background:var(--dark-bg);border-radius:8px;text-align:center;">' +
-                    '<span style="color:#b0b3c8;font-size:13px;">' + latestW.weather_description + '</span>' +
+                    '<span style="color:#6b7088;font-size:13px;">' + latestW.weather_description + '</span>' +
                 '</div>';
         }
 
@@ -413,7 +413,7 @@ async function loadNews(cca2) {
                     '</span>' +
                     '<div>' +
                         '<a href="' + (a.url || '#') + '" target="_blank" ' +
-                           'style="color:#fff;text-decoration:none;font-size:13px;font-weight:500;line-height:1.4;">' +
+                           'style="color:var(--text-main);text-decoration:none;font-size:13px;font-weight:500;line-height:1.4;">' +
                             a.title +
                         '</a>' +
                         '<div style="font-size:11px;color:var(--text-muted-custom);margin-top:3px;">' +
@@ -440,9 +440,9 @@ async function loadSentiment(cca2) {
         var d = data.data;
         document.getElementById('sentiment-content').innerHTML =
             '<div style="display:flex;justify-content:space-between;margin-bottom:12px;">' +
-                sentimentStat(d.positive, d.positive_pct, '#25b574', 'Positif') +
-                sentimentStat(d.neutral,  d.neutral_pct,  '#ffc107', 'Netral')  +
-                sentimentStat(d.negative, d.negative_pct, '#ff6b7a', 'Negatif') +
+                sentimentStat(d.positive, d.positive_pct, '#198754', 'Positif') +
+                sentimentStat(d.neutral,  d.neutral_pct,  '#e6a700', 'Netral')  +
+                sentimentStat(d.negative, d.negative_pct, '#dc3545', 'Negatif') +
             '</div>' +
             '<div style="font-size:11px;color:var(--text-muted-custom);text-align:center;">Total ' + d.total + ' artikel dianalisis</div>';
 
@@ -453,12 +453,12 @@ async function loadSentiment(cca2) {
                 labels: ['Positif', 'Netral', 'Negatif'],
                 datasets: [{
                     data: [d.positive, d.neutral, d.negative],
-                    backgroundColor: ['#25b574', '#ffc107', '#ff6b7a'],
+                    backgroundColor: ['#198754', '#e6a700', '#dc3545'],
                     borderWidth: 0,
                 }]
             },
             options: {
-                plugins: { legend: { labels: { color: '#b0b3c8', font: { size: 11 } } } },
+                plugins: { legend: { labels: { color: '#4b4f66', font: { size: 11 } } } },
                 cutout: '65%',
             }
         });
@@ -485,11 +485,11 @@ async function loadRiskHistory(cca2) {
                 datasets: [{
                     label: 'Risk Score',
                     data: scores,
-                    borderColor: '#0d6efd',
-                    backgroundColor: 'rgba(13,110,253,0.1)',
+                    borderColor: '#fd7e14',
+                    backgroundColor: 'rgba(253,126,20,0.12)',
                     fill: true,
                     tension: 0.4,
-                    pointBackgroundColor: '#0d6efd',
+                    pointBackgroundColor: '#fd7e14',
                     pointRadius: 4,
                 }]
             },
@@ -501,8 +501,8 @@ async function loadRiskHistory(cca2) {
 // ===== HELPERS =====
 function weatherStat(icon, label, value) {
     return '<div style="background:var(--dark-bg);border-radius:8px;padding:10px;text-align:center;">' +
-        '<i class="bi ' + icon + '" style="color:#0d6efd;font-size:18px;"></i>' +
-        '<div style="color:#fff;font-weight:600;font-size:14px;margin-top:4px;">' + value + '</div>' +
+        '<i class="bi ' + icon + '" style="color:#fd7e14;font-size:18px;"></i>' +
+        '<div style="color:var(--text-main);font-weight:600;font-size:14px;margin-top:4px;">' + value + '</div>' +
         '<div style="color:var(--text-muted-custom);font-size:11px;">' + label + '</div>' +
     '</div>';
 }
@@ -515,13 +515,13 @@ function sentimentStat(count, pct, color, label) {
 }
 
 function getRiskColor(score) {
-    if (score <= 33) return '#25b574';
-    if (score <= 66) return '#ffc107';
-    return '#ff6b7a';
+    if (score <= 33) return '#198754';
+    if (score <= 66) return '#e6a700';
+    return '#dc3545';
 }
 
 function drawGauge(score, level) {
-    var colors = { Low: '#25b574', Medium: '#ffc107', High: '#ff6b7a' };
+    var colors = { Low: '#198754', Medium: '#e6a700', High: '#dc3545' };
     var ctx = document.getElementById('risk-gauge').getContext('2d');
     if (window._gaugeChart) window._gaugeChart.destroy();
     window._gaugeChart = new Chart(ctx, {
@@ -529,7 +529,7 @@ function drawGauge(score, level) {
         data: {
             datasets: [{
                 data: [score, 100 - score],
-                backgroundColor: [colors[level] || '#0d6efd', 'rgba(255,255,255,0.05)'],
+                backgroundColor: [colors[level] || '#fd7e14', 'rgba(31,35,51,0.08)'],
                 borderWidth: 0,
                 circumference: 180,
                 rotation: 270,
@@ -545,8 +545,8 @@ function chartOptions(yLabel) {
         maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: {
-            x: { ticks: { color: '#8b8fa8', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
-            y: { ticks: { color: '#8b8fa8', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } }
+            x: { ticks: { color: '#6b7088', font: { size: 10 } }, grid: { color: 'rgba(31,35,51,0.06)' } },
+            y: { ticks: { color: '#6b7088', font: { size: 10 } }, grid: { color: 'rgba(31,35,51,0.06)' } }
         }
     };
 }

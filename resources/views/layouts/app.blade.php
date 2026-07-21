@@ -14,16 +14,17 @@
         :root {
             --sidebar-width: 260px;
             --topbar-height: 60px;
-            --primary: #0d6efd;
-            --dark-bg: #0f1117;
-            --card-bg: #1a1d27;
-            --card-border: #2a2d3e;
-            --text-muted-custom: #8b8fa8;
+            --primary: #fd7e14;
+            --dark-bg: #f4f5f9;
+            --card-bg: #ffffff;
+            --card-border: #e4e6ef;
+            --text-main: #1f2333;
+            --text-muted-custom: #6b7088;
         }
 
         body {
             background-color: var(--dark-bg);
-            color: #e2e5f1;
+            color: var(--text-main);
             font-family: 'Segoe UI', sans-serif;
             overflow-x: hidden;
         }
@@ -35,6 +36,7 @@
             top: 0; left: 0;
             background: var(--card-bg);
             border-right: 1px solid var(--card-border);
+            box-shadow: 2px 0 12px rgba(31,35,51,0.04);
             z-index: 1000;
             overflow-y: auto;
             transition: transform 0.3s ease;
@@ -46,7 +48,7 @@
         }
 
         .sidebar-brand h6 {
-            color: #fff;
+            color: var(--text-main);
             font-weight: 700;
             font-size: 13px;
             letter-spacing: 0.5px;
@@ -73,7 +75,7 @@
             align-items: center;
             gap: 10px;
             padding: 10px 20px;
-            color: #b0b3c8;
+            color: #4b4f66;
             text-decoration: none;
             font-size: 13px;
             transition: all 0.2s;
@@ -82,8 +84,9 @@
 
         .sidebar-nav a:hover,
         .sidebar-nav a.active {
-            background: rgba(13, 110, 253, 0.1);
-            color: #fff;
+            background: rgba(253, 126, 20, 0.10);
+            color: var(--primary);
+            font-weight: 600;
             border-left-color: var(--primary);
         }
 
@@ -95,8 +98,9 @@
 
         .sidebar-nav a.admin-link:hover,
         .sidebar-nav a.admin-link.active {
-            background: rgba(220, 53, 69, 0.1);
-            color: #ff6b7a;
+            background: rgba(220, 53, 69, 0.08);
+            color: #dc3545;
+            font-weight: 600;
             border-left-color: #dc3545;
         }
 
@@ -108,6 +112,7 @@
             right: 0;
             background: var(--card-bg);
             border-bottom: 1px solid var(--card-border);
+            box-shadow: 0 2px 12px rgba(31,35,51,0.04);
             z-index: 999;
             display: flex;
             align-items: center;
@@ -124,7 +129,7 @@
         #country-search {
             background: var(--dark-bg);
             border: 1px solid var(--card-border);
-            color: #fff;
+            color: var(--text-main);
             border-radius: 8px;
             padding: 8px 15px 8px 38px;
             width: 100%;
@@ -134,7 +139,7 @@
         #country-search:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(13,110,253,0.15);
+            box-shadow: 0 0 0 3px rgba(253,126,20,0.18);
         }
 
         #country-search::placeholder { color: var(--text-muted-custom); }
@@ -158,7 +163,7 @@
             z-index: 9999;
             max-height: 300px;
             overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 30px rgba(31,35,51,0.12);
         }
 
         .search-result-item {
@@ -171,7 +176,7 @@
             transition: background 0.15s;
         }
 
-        .search-result-item:hover { background: rgba(13,110,253,0.1); }
+        .search-result-item:hover { background: rgba(253,126,20,0.12); }
         .search-result-item:last-child { border-bottom: none; }
 
         .search-result-item img {
@@ -183,7 +188,7 @@
 
         .search-result-item .country-name {
             font-size: 14px;
-            color: #fff;
+            color: var(--text-main);
             font-weight: 500;
         }
 
@@ -205,6 +210,7 @@
             border-radius: 12px;
             padding: 20px;
             height: 100%;
+            box-shadow: 0 2px 10px rgba(31,35,51,0.04);
         }
 
         .dash-card-title {
@@ -218,7 +224,7 @@
         .dash-card-value {
             font-size: 28px;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-main);
             line-height: 1.2;
         }
 
@@ -246,7 +252,7 @@
             height: 8px;
             border-radius: 4px;
             overflow: hidden;
-            background: var(--dark-bg);
+            background: var(--card-border);
             display: flex;
             gap: 2px;
         }
@@ -255,7 +261,7 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(15,17,23,0.85);
+            background: rgba(244,245,249,0.9);
             z-index: 9998;
             flex-direction: column;
             align-items: center;
@@ -290,7 +296,7 @@
         #country-header img {
             height: 36px;
             border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 8px rgba(31,35,51,0.15);
         }
 
         #country-header.show { display: flex; }
@@ -302,7 +308,7 @@
 
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: var(--dark-bg); }
-        ::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #c7cbdb; border-radius: 3px; }
     </style>
 
     @stack('styles')
@@ -312,7 +318,7 @@
 {{-- Loading Overlay --}}
 <div id="loading-overlay">
     <div class="loading-spinner"></div>
-    <div style="color:#b0b3c8;font-size:14px;" id="loading-text">Mengambil data negara...</div>
+    <div style="color:#4b4f66;font-size:14px;" id="loading-text">Mengambil data negara...</div>
 </div>
 
 {{-- Sidebar --}}
@@ -321,7 +327,7 @@
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
             <div style="width:32px;height:32px;background:var(--primary);border-radius:8px;
                         display:flex;align-items:center;justify-content:center;">
-                <i class="bi bi-globe2" style="color:#fff;font-size:16px;"></i>
+                <i class="bi bi-diagram-3-fill" style="color:#fff;font-size:16px;"></i>
             </div>
             <div>
                 <h6>Supply Chain Risk</h6>
@@ -402,8 +408,8 @@
     <form method="POST" action="{{ route('logout') }}" style="display:inline;">
     @csrf
     <button type="submit"
-            style="background:rgba(255,255,255,0.05);border:1px solid var(--card-border);
-                   color:#8b8fa8;padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer;
+            style="background:#f4f5f9;border:1px solid var(--card-border);
+                   color:#4b4f66;padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer;
                    display:flex;align-items:center;gap:5px;">
         <i class="bi bi-box-arrow-right"></i> Logout
     </button>
@@ -422,7 +428,7 @@
             <i class="bi bi-shield-lock-fill"></i> Admin
         </a>
         <a href="{{ route('watchlist') }}"
-           style="background:var(--card-border);color:#fff;border:none;
+           style="background:#f4f5f9;color:#4b4f66;border:1px solid var(--card-border);
                   padding:5px 12px;border-radius:6px;font-size:12px;
                   text-decoration:none;display:flex;align-items:center;gap:5px;">
             <i class="bi bi-bookmark-plus"></i>

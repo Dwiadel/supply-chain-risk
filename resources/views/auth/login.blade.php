@@ -28,7 +28,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(ellipse at 20% 50%, rgba(13,110,253,0.08) 0%, transparent 50%),
+            background: radial-gradient(ellipse at 20% 50%, rgba(253,126,20,0.10) 0%, transparent 50%),
                         radial-gradient(ellipse at 80% 20%, rgba(37,181,116,0.06) 0%, transparent 50%),
                         radial-gradient(ellipse at 60% 80%, rgba(220,53,69,0.05) 0%, transparent 50%);
             animation: bgMove 15s ease-in-out infinite alternate;
@@ -68,13 +68,13 @@
         .logo-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, #0d6efd, #0a58ca);
+            background: linear-gradient(135deg, #fd7e14, #e8590c);
             border-radius: 16px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 16px;
-            box-shadow: 0 8px 32px rgba(13,110,253,0.3);
+            box-shadow: 0 8px 32px rgba(253,126,20,0.35);
         }
 
         .login-logo h4 {
@@ -133,8 +133,8 @@
         }
 
         .form-control:focus {
-            border-color: #0d6efd !important;
-            box-shadow: 0 0 0 3px rgba(13,110,253,0.15) !important;
+            border-color: #fd7e14 !important;
+            box-shadow: 0 0 0 3px rgba(253,126,20,0.18) !important;
             outline: none;
         }
 
@@ -179,8 +179,8 @@
         }
 
         .form-check-input:checked {
-            background-color: #0d6efd !important;
-            border-color: #0d6efd !important;
+            background-color: #fd7e14 !important;
+            border-color: #fd7e14 !important;
         }
 
         .form-check-label {
@@ -191,7 +191,7 @@
 
         /* Button */
         .btn-login {
-            background: linear-gradient(135deg, #0d6efd, #0a58ca);
+            background: linear-gradient(135deg, #fd7e14, #e8590c);
             border: none;
             color: #fff;
             padding: 12px;
@@ -201,13 +201,13 @@
             width: 100%;
             cursor: pointer;
             transition: transform 0.15s, box-shadow 0.15s;
-            box-shadow: 0 4px 15px rgba(13,110,253,0.3);
+            box-shadow: 0 4px 15px rgba(253,126,20,0.35);
             margin-top: 8px;
         }
 
         .btn-login:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(13,110,253,0.4);
+            box-shadow: 0 6px 20px rgba(253,126,20,0.45);
         }
 
         .btn-login:active { transform: translateY(0); }
@@ -230,13 +230,13 @@
         .demo-creds {
             margin-top: 20px;
             padding: 14px;
-            background: rgba(13,110,253,0.06);
-            border: 1px solid rgba(13,110,253,0.2);
+            background: rgba(253,126,20,0.08);
+            border: 1px solid rgba(253,126,20,0.25);
             border-radius: 8px;
         }
 
         .demo-creds-title {
-            color: #0d6efd;
+            color: #fd9843;
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
@@ -270,7 +270,7 @@
             transition: background 0.15s;
         }
 
-        .demo-cred-value:hover { background: rgba(13,110,253,0.2); color: #fff; }
+        .demo-cred-value:hover { background: rgba(253,126,20,0.2); color: #fff; }
 
         /* Footer */
         .login-footer {
@@ -383,7 +383,16 @@
         Global Supply Chain Risk Intelligence Platform<br>
         Universitas Malikussaleh · {{ date('Y') }}
     </div>
-
+    {{-- Link ke admin login --}}
+<div style="text-align:center;margin-top:15px;">
+    <a href="{{ route('admin.login') }}"
+       style="color:#4a4d5e;font-size:12px;text-decoration:none;
+              display:inline-flex;align-items:center;gap:5px;transition:color 0.2s;"
+       onmouseenter="this.style.color='#8b8fa8'"
+       onmouseleave="this.style.color='#4a4d5e'">
+        <i class="bi bi-shield-lock-fill" style="color:#dc3545;"></i>
+        Masuk sebagai Administrator
+    </a>
 </div>
 
 <script>

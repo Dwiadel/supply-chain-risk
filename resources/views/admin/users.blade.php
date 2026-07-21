@@ -26,7 +26,7 @@
                         @csrf @method('PATCH')
                         <select name="role" onchange="this.form.submit()"
                                 style="background:var(--dark-bg);border:1px solid var(--card-border);
-                                       color:#fff;border-radius:6px;padding:3px 8px;font-size:12px;">
+                                       color:var(--text-main);border-radius:6px;padding:3px 8px;font-size:12px;">
                             <option value="user"  {{ $user->role === 'user'  ? 'selected' : '' }}>user</option>
                             <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>admin</option>
                         </select>

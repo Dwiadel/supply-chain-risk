@@ -55,7 +55,7 @@
                                 {{ $article->created_at->format('d M Y H:i') }}
                             </span>
                         </div>
-                        <div style="color:#fff;font-weight:600;font-size:14px;margin-bottom:6px;">
+                        <div style="color:var(--text-main);font-weight:600;font-size:14px;margin-bottom:6px;">
                             {{ $article->title }}
                         </div>
                         <div style="color:var(--text-muted-custom);font-size:12px;line-height:1.5;">

@@ -90,7 +90,7 @@
                     @foreach($recentRisks as $risk)
                     <tr>
                         <td style="font-weight:500;">{{ $risk->country->name ?? '—' }}</td>
-                        <td style="color:#fff;font-weight:700;">{{ $risk->total_score }}</td>
+                        <td style="color:var(--text-main);font-weight:700;">{{ $risk->total_score }}</td>
                         <td>
                             <span class="badge-admin {{ $risk->risk_level === 'High' ? 'badge-admin-red' : 'badge-admin-blue' }}">
                                 {{ $risk->risk_level }}

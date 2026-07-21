@@ -29,28 +29,28 @@
             <div class="dash-card-title"><i class="bi bi-info-circle"></i> Legenda Peta</div>
             <div style="margin-top:8px;display:flex;flex-direction:column;gap:8px;">
                 <div style="display:flex;align-items:center;gap:8px;">
-                    <div style="width:14px;height:14px;background:#0d6efd;border-radius:50%;flex-shrink:0;"></div>
-                    <span style="color:#b0b3c8;font-size:12px;">Pelabuhan Besar (Large)</span>
+                    <div style="width:14px;height:14px;background:#fd7e14;border-radius:50%;flex-shrink:0;"></div>
+                    <span style="color:#4b4f66;font-size:12px;">Pelabuhan Besar (Large)</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;">
                     <div style="width:10px;height:10px;background:#6c757d;border-radius:50%;flex-shrink:0;"></div>
-                    <span style="color:#b0b3c8;font-size:12px;">Pelabuhan Medium/Small</span>
+                    <span style="color:#4b4f66;font-size:12px;">Pelabuhan Medium/Small</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;">
-                    <div style="width:14px;height:14px;background:#25b574;border-radius:50%;flex-shrink:0;border:2px solid #fff;"></div>
-                    <span style="color:#b0b3c8;font-size:12px;">Negara dipilih (Low Risk)</span>
+                    <div style="width:14px;height:14px;background:#25b574;border-radius:50%;flex-shrink:0;border:2px solid #fff;box-shadow:0 0 0 1px var(--card-border);"></div>
+                    <span style="color:#4b4f66;font-size:12px;">Negara dipilih (Low Risk)</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;">
-                    <div style="width:14px;height:14px;background:#ffc107;border-radius:50%;flex-shrink:0;border:2px solid #fff;"></div>
-                    <span style="color:#b0b3c8;font-size:12px;">Negara dipilih (Medium Risk)</span>
+                    <div style="width:14px;height:14px;background:#ffc107;border-radius:50%;flex-shrink:0;border:2px solid #fff;box-shadow:0 0 0 1px var(--card-border);"></div>
+                    <span style="color:#4b4f66;font-size:12px;">Negara dipilih (Medium Risk)</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;">
-                    <div style="width:14px;height:14px;background:#ff6b7a;border-radius:50%;flex-shrink:0;border:2px solid #fff;"></div>
-                    <span style="color:#b0b3c8;font-size:12px;">Negara dipilih (High Risk)</span>
+                    <div style="width:14px;height:14px;background:#ff6b7a;border-radius:50%;flex-shrink:0;border:2px solid #fff;box-shadow:0 0 0 1px var(--card-border);"></div>
+                    <span style="color:#4b4f66;font-size:12px;">Negara dipilih (High Risk)</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;">
-                    <div style="width:20px;height:14px;background:rgba(13,110,253,0.3);border:1px solid #0d6efd;border-radius:3px;flex-shrink:0;"></div>
-                    <span style="color:#b0b3c8;font-size:12px;">Overlay Hujan/Badai</span>
+                    <div style="width:20px;height:14px;background:rgba(253,126,20,0.3);border:1px solid #fd7e14;border-radius:3px;flex-shrink:0;"></div>
+                    <span style="color:#4b4f66;font-size:12px;">Overlay Hujan/Badai</span>
                 </div>
             </div>
 
@@ -75,29 +75,29 @@
             <div class="row g-2">
                 <div class="col-3">
                     <div class="dash-card" style="padding:12px;text-align:center;">
-                        <i class="bi bi-cloud-rain-fill" style="font-size:20px;color:#0d6efd;"></i>
-                        <div style="color:#fff;font-weight:700;font-size:16px;margin-top:4px;" id="ws-rain">—</div>
+                        <i class="bi bi-cloud-rain-fill" style="font-size:20px;color:#fd7e14;"></i>
+                        <div style="color:var(--text-main);font-weight:700;font-size:16px;margin-top:4px;" id="ws-rain">—</div>
                         <div style="color:var(--text-muted-custom);font-size:11px;">Curah Hujan (mm)</div>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="dash-card" style="padding:12px;text-align:center;">
                         <i class="bi bi-wind" style="font-size:20px;color:#25b574;"></i>
-                        <div style="color:#fff;font-weight:700;font-size:16px;margin-top:4px;" id="ws-wind">—</div>
+                        <div style="color:var(--text-main);font-weight:700;font-size:16px;margin-top:4px;" id="ws-wind">—</div>
                         <div style="color:var(--text-muted-custom);font-size:11px;">Angin (km/h)</div>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="dash-card" style="padding:12px;text-align:center;">
-                        <i class="bi bi-exclamation-triangle-fill" style="font-size:20px;color:#ffc107;"></i>
-                        <div style="color:#fff;font-weight:700;font-size:16px;margin-top:4px;" id="ws-storm">—</div>
+                        <i class="bi bi-exclamation-triangle-fill" style="font-size:20px;color:#e6a700;"></i>
+                        <div style="color:var(--text-main);font-weight:700;font-size:16px;margin-top:4px;" id="ws-storm">—</div>
                         <div style="color:var(--text-muted-custom);font-size:11px;">Storm Risk (0-100)</div>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="dash-card" style="padding:12px;text-align:center;">
-                        <i class="bi bi-thermometer-half" style="font-size:20px;color:#ff6b7a;"></i>
-                        <div style="color:#fff;font-weight:700;font-size:16px;margin-top:4px;" id="ws-temp">—</div>
+                        <i class="bi bi-thermometer-half" style="font-size:20px;color:#dc3545;"></i>
+                        <div style="color:var(--text-main);font-weight:700;font-size:16px;margin-top:4px;" id="ws-temp">—</div>
                         <div style="color:var(--text-muted-custom);font-size:11px;">Suhu (°C)</div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@ fetch('/api/ports')
             var isLarge = port.size_category === 'Large';
             L.circleMarker([port.latitude, port.longitude], {
                 radius      : isLarge ? 7 : 5,
-                fillColor   : isLarge ? '#0d6efd' : '#6c757d',
+                fillColor   : isLarge ? '#fd7e14' : '#6c757d',
                 color       : '#fff',
                 weight      : 1.5,
                 opacity     : 1,
@@ -142,7 +142,7 @@ fetch('/api/ports')
                 '<div style="min-width:140px;">' +
                 '<b style="font-size:13px;">' + port.name + '</b><br>' +
                 '<span style="color:#666;">' + port.country_name + '</span><br>' +
-                '<span style="background:' + (isLarge ? '#0d6efd' : '#6c757d') + ';color:#fff;padding:2px 8px;border-radius:10px;font-size:10px;">' +
+                '<span style="background:' + (isLarge ? '#fd7e14' : '#6c757d') + ';color:#fff;padding:2px 8px;border-radius:10px;font-size:10px;">' +
                     port.size_category + ' Port' +
                 '</span>' +
                 '</div>'
@@ -205,7 +205,7 @@ window.addEventListener('countrySelected', function(e) {
         var stormRisk     = parseFloat(w.storm_risk_score || 0);
 
         // Warna overlay berdasarkan kondisi cuaca
-        var overlayColor  = '#0d6efd'; // default biru (hujan ringan)
+        var overlayColor  = '#fd7e14'; // default oranye (hujan ringan)
         var overlayLabel  = 'Kondisi Normal';
 
         if (stormRisk > 66) {
@@ -215,7 +215,7 @@ window.addEventListener('countrySelected', function(e) {
             overlayColor = '#ffc107'; // kuning = angin kencang
             overlayLabel = 'Angin Kencang';
         } else if (precipitation > 5) {
-            overlayColor = '#0d6efd'; // biru = hujan
+            overlayColor = '#fd7e14'; // oranye = hujan
             overlayLabel = 'Hujan';
         }
 
@@ -250,9 +250,9 @@ window.addEventListener('countrySelected', function(e) {
         document.getElementById('ws-temp').textContent  = (w.temperature || '—') + '°C';
 
         // Warnai stats berdasarkan intensitas
-        document.getElementById('ws-rain').style.color  = precipitation > 10 ? '#ff6b7a' : precipitation > 5 ? '#ffc107' : '#25b574';
-        document.getElementById('ws-wind').style.color  = windSpeed > 50 ? '#ff6b7a' : windSpeed > 30 ? '#ffc107' : '#25b574';
-        document.getElementById('ws-storm').style.color = stormRisk > 66 ? '#ff6b7a' : stormRisk > 33 ? '#ffc107' : '#25b574';
+        document.getElementById('ws-rain').style.color  = precipitation > 10 ? '#dc3545' : precipitation > 5 ? '#e6a700' : '#198754';
+        document.getElementById('ws-wind').style.color  = windSpeed > 50 ? '#dc3545' : windSpeed > 30 ? '#e6a700' : '#198754';
+        document.getElementById('ws-storm').style.color = stormRisk > 66 ? '#dc3545' : stormRisk > 33 ? '#e6a700' : '#198754';
 
         // Update panel cuaca kiri
         document.getElementById('weather-panel').innerHTML =
@@ -261,11 +261,11 @@ window.addEventListener('countrySelected', function(e) {
                 '<div style="color:' + overlayColor + ';font-weight:700;font-size:13px;margin-bottom:8px;">' +
                     getWeatherIcon(stormRisk, windSpeed, precipitation) + ' ' + overlayLabel +
                 '</div>' +
-                weatherRow('Curah Hujan', precipitation + ' mm', precipitation > 10 ? '#ff6b7a' : '#25b574') +
-                weatherRow('Kecepatan Angin', windSpeed + ' km/h', windSpeed > 30 ? '#ffc107' : '#25b574') +
-                weatherRow('Storm Risk Score', stormRisk + ' / 100', stormRisk > 66 ? '#ff6b7a' : stormRisk > 33 ? '#ffc107' : '#25b574') +
-                weatherRow('Suhu', (w.temperature || '—') + '°C', '#b0b3c8') +
-                weatherRow('Deskripsi', w.weather_description || '—', '#b0b3c8') +
+                weatherRow('Curah Hujan', precipitation + ' mm', precipitation > 10 ? '#dc3545' : '#198754') +
+                weatherRow('Kecepatan Angin', windSpeed + ' km/h', windSpeed > 30 ? '#e6a700' : '#198754') +
+                weatherRow('Storm Risk Score', stormRisk + ' / 100', stormRisk > 66 ? '#dc3545' : stormRisk > 33 ? '#e6a700' : '#198754') +
+                weatherRow('Suhu', (w.temperature || '—') + '°C', '#4b4f66') +
+                weatherRow('Deskripsi', w.weather_description || '—', '#4b4f66') +
             '</div>' +
             '<div style="font-size:11px;color:var(--text-muted-custom);text-align:center;">' +
                 'Data dari Open-Meteo API · ' + (w.fetched_at ? new Date(w.fetched_at).toLocaleString('id-ID') : '—') +
@@ -300,7 +300,7 @@ function weatherRow(label, value, color) {
 
 function updateCountryPanel(country, risk) {
     var flagImg = country.flag_url
-        ? '<img src="' + country.flag_url + '" style="width:60px;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">'
+        ? '<img src="' + country.flag_url + '" style="width:60px;border-radius:4px;box-shadow:0 2px 8px rgba(31,35,51,0.15);">'
         : '';
     var riskLevel = risk ? risk.risk_level : null;
     var riskColor = riskLevel === 'High' ? '#ff6b7a' : riskLevel === 'Medium' ? '#ffc107' : '#25b574';
@@ -308,7 +308,7 @@ function updateCountryPanel(country, risk) {
     document.getElementById('country-info-panel').innerHTML =
         '<div style="text-align:center;margin-bottom:12px;">' +
             flagImg +
-            '<h6 style="color:#fff;margin:8px 0 4px;font-weight:700;">' + country.name + '</h6>' +
+            '<h6 style="color:var(--text-main);margin:8px 0 4px;font-weight:700;">' + country.name + '</h6>' +
             '<small style="color:var(--text-muted-custom);">' + (country.capital || '—') + ' · ' + (country.region || '—') + '</small>' +
             (riskLevel ? '<br><span class="risk-badge risk-' + riskLevel.toLowerCase() + '" style="margin-top:8px;font-size:11px;">' + riskLevel + ' Risk</span>' : '') +
         '</div>' +
@@ -333,7 +333,7 @@ function showNearbyPorts(lat, lng) {
     document.getElementById('nearby-ports').innerHTML = nearby.map(function(p) {
         return '<div style="padding:6px 0;border-bottom:1px solid var(--card-border);cursor:pointer;" ' +
                'onclick="map.flyTo([' + p.latitude + ',' + p.longitude + '],8)">' +
-                   '<div style="color:#fff;font-size:12px;font-weight:500;">' + p.name + '</div>' +
+                   '<div style="color:var(--text-main);font-size:12px;font-weight:500;">' + p.name + '</div>' +
                    '<div style="color:var(--text-muted-custom);font-size:11px;">' + p.country_name + ' · ' + p.size_category + '</div>' +
                '</div>';
     }).join('');
@@ -341,8 +341,8 @@ function showNearbyPorts(lat, lng) {
 
 function infoBox(icon, label, value) {
     return '<div style="background:var(--dark-bg);border-radius:8px;padding:8px;text-align:center;">' +
-        '<i class="bi ' + icon + '" style="color:#0d6efd;font-size:13px;"></i>' +
-        '<div style="color:#fff;font-size:11px;font-weight:600;margin-top:3px;">' + value + '</div>' +
+        '<i class="bi ' + icon + '" style="color:#fd7e14;font-size:13px;"></i>' +
+        '<div style="color:var(--text-main);font-size:11px;font-weight:600;margin-top:3px;">' + value + '</div>' +
         '<div style="color:var(--text-muted-custom);font-size:10px;">' + label + '</div>' +
     '</div>';
 }
